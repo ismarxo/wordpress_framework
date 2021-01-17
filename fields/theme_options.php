@@ -17,7 +17,7 @@ Container::make('theme_options', 'Настройки сайта')
     ->add_tab('Подвал сайта', array(
         Field::make('image', 'footer_logo', 'Логотип')
             ->set_width(100),
-        Field::make('complex', 'footer_socail', 'Соц.сети')
+        Field::make('complex', 'footer_social', 'Соц.сети')
             ->add_fields( array(
                 Field::make('image', 'image', 'Иконка')
                     ->set_width(50),
@@ -36,6 +36,7 @@ Container::make('theme_options', 'Настройки сайта')
                 Field::make('text', 'phone', 'Телефон')
             )),
         Field::make('text', 'footer_hours', 'Время работы'), 
+        Field::make('text', 'footer_mail', 'Почта'), 
         Field::make('textarea', 'copyright_title', 'Копирайт - заголовок'),
         Field::make('textarea', 'copyright', 'Копирайт')
     ));

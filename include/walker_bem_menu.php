@@ -409,15 +409,11 @@
 			// Define menu item names appropriately
 			$this->item_css_class_suffixes = array(
 				'item'                    => '__item',
-				'sub_item'                => '-sub-item',
-				'parent_item'             => 'menu-item-parent',
 				'active_item'             => ' active',
-				'active_sub_item'         => '__item--active',
-				'parent_of_active_item'   => '__item--parent-active',
-				'ancestor_of_active_item' => '__item--ancestor-active',
-				'sub_menu'                => '',
+				'active_sub_item'         => ' active',
+				'parent_of_active_item'   => ' active',
+				'ancestor_of_active_item' => ' active',
 				'link'                    => '__link',
-				'sub_link'                => '-link'
 			);
 		}
 

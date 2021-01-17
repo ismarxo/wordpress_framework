@@ -2830,19 +2830,12 @@ height: 40px
 
 .section {
   &__title {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 200%;
-    text-align: center;
+   
    
   }
 
   &__desc {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 150%;
+    
   }
 }
 
@@ -2853,8 +2846,20 @@ height: 40px
     margin-top: 52px;  
     
   }
+
+  &__title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 200%;
+    text-align: center;
+  }
   
   &__desc {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
     color: #696969;
   }
 
@@ -2996,7 +3001,7 @@ height: 40px
 
 
 .footer {
-  
+  background: #333333;
 }
 
 

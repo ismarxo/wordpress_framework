@@ -2818,21 +2818,6 @@ h1, .h1 {
   z-index: 4;
 }
 
-.section__title {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 200%;
-  text-align: center;
-}
-
-.section__desc {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 150%;
-}
-
 .services__inner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2844,7 +2829,19 @@ h1, .h1 {
   margin-top: 52px;
 }
 
+.services__title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 200%;
+  text-align: center;
+}
+
 .services__desc {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
   color: #696969;
 }
 
@@ -2947,5 +2944,9 @@ h1, .h1 {
   text-align: center;
   color: #FFFFFF;
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.07);
+}
+
+.footer {
+  background: #333333;
 }
 /*# sourceMappingURL=main.css.map */

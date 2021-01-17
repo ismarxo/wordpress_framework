@@ -8,8 +8,6 @@
 register_nav_menus(
     array(
         'header_menu'        => 'Меню шапки',
-        'footer__menu1'          => 'Меню в подвале сайта 1',
-        'footer__menu2'          => 'Меню в подвале сайта 2',
-        'footer__menu3'          => 'Меню в подвале сайта 3'
+        'footer_menu'          => 'Меню в подвале сайта',
     )
 );
