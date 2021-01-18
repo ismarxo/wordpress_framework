@@ -20,7 +20,7 @@ $arResult = [
     <div class="container">
         <div class="footer__inner-top">            
             <<?php if (!is_front_page()): echo 'a href="/"'; else: echo 'span'; endif; ?> class="footer__logo">
-                <img src="" alt="" class="footer__logo-img">
+                <img src="<?= $arResult['logo']['link'] ?>" alt="<?= $arResult['logo']['alt'] ?>" class="footer__logo-img">
             </<?php if (!is_front_page()): echo 'a'; else: echo 'span'; endif; ?>>
             <div class="footer__links">
                 <?php if ($arResult['social']): ?>
@@ -32,7 +32,7 @@ $arResult = [
                     <?php foreach ($arResult['social'] as $item): ?>
                         <li class="footer__social-item">
                             <a href="<?= $item['link'] ?>" class="footer__social-link">
-                                <img src="<?= wp_get_attachment_image_url(carbon_get_theme_option($item['image']), 'full') ?>" alt="<?= get_post_meta(carbon_get_theme_option($item['image']), '_wp_attachment_image_alt', true) ?>" class="footer__social-img">
+                                <img src="<?= wp_get_attachment_image_url($item['image'], 'full') ?>" alt="<?= get_post_meta($item['image'], '_wp_attachment_image_alt', true) ?>" class="footer__social-img">
                             </a>
                         </li>
                     <?php endforeach; ?>
@@ -48,7 +48,7 @@ $arResult = [
                     <?php foreach ($arResult['mess'] as $item): ?>
                         <li class="footer__mess-item">
                             <a href="<?= $item['link'] ?>" class="footer__mess-link">
-                                <img src="<?= wp_get_attachment_image_url(carbon_get_theme_option($item['image']), 'full') ?>" alt="<?= get_post_meta(carbon_get_theme_option($item['image']), '_wp_attachment_image_alt', true) ?>" class="footer__social-img">
+                                <img src="<?= wp_get_attachment_image_url($item['image'], 'full') ?>" alt="<?= get_post_meta( $item['image'], '_wp_attachment_image_alt', true) ?>" class="footer__social-img">
                             </a>
                         </li>
                     <?php endforeach; ?>
@@ -62,7 +62,7 @@ $arResult = [
                     'container'       => false,
                     'menu_class'      => 'footer__menu-list',
                     'depth'           => 1,
-                    'walker'          => new walker_bem_footer_menu('footer_menu'),
+                    'walker'          => new walker_bem_footer_menu('footer__menu'),
                 )); ?>
             </div>
             <div class="footer__contacts">
@@ -74,10 +74,10 @@ $arResult = [
                 </div>          
                 <?php endif; ?>      
                 <?php if ($arResult['hours']): ?>           
-                    <div class="header__hours"><?= $arResult['hours'] ?></div>
+                    <div class="footer__hours"><?= $arResult['hours'] ?></div>
                     <?php endif; ?>
                     <?php if ($arResult['mail']): ?>    
-                    <a href="mailto:<?= $arResult['mail'] ?>" class="header__hours"><?= $arResult['mail'] ?></a>
+                    <a href="mailto:<?= $arResult['mail'] ?>" class="footer__mail"><?= $arResult['mail'] ?></a>
                         <?php endif; ?>
                 </div>
            
@@ -91,10 +91,13 @@ $arResult = [
         <?= $arResult['copyright']; ?>
     </div>
     <a href="https://mtsite.ru" rel="nofollow noreferrer noopener" target="_blank" class="footer__designed">
-        <img src="<?= _assets(); ?>/img/components/footer/logo_multisite.svg" width="172" height="53"
+        <span>
+            Сделано в веб-студии &quot;Мультисайт&quot;
+            <br />Разработка и продвижение сайтов
+        </span>
+
+        <img src="<?= _assets(); ?>/img/logo_multisite.svg" width="172" height="53"
             alt="Логотип веб-студии 'Мультисайт'" class="footer__designed-logo" />
-        Сделано в веб-студии &quot;Мультисайт&quot;
-        <br />Разработка и продвижение сайтов
     </a>
         </div>
         

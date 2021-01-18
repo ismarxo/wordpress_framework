@@ -408,12 +408,12 @@
 
 			// Define menu item names appropriately
 			$this->item_css_class_suffixes = array(
-				'item'                    => '__item',
+				'item'                    => '-item',
 				'active_item'             => ' active',
 				'active_sub_item'         => ' active',
 				'parent_of_active_item'   => ' active',
 				'ancestor_of_active_item' => ' active',
-				'link'                    => '__link',
+				'link'                    => '-link',
 			);
 		}
 
