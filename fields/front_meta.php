@@ -25,6 +25,9 @@ Container::make( 'post_meta', 'Настройки главной страниц�
                     'singular_name' => 'секцию',
                 ))                
                 ->add_fields('hero__banner', 'Баннер-экран', array(
+                        Field::make( 'text', 'pretitle', 'Предзаголовок' )  
+                            ->set_width(100)
+                            ->set_default_value('Заголовок'),   
                         Field::make( 'select', 'title_state', 'Статус заголовка' )
                             ->set_width(10)
                             ->set_options( $seo_tags )
@@ -36,11 +39,104 @@ Container::make( 'post_meta', 'Настройки главной страниц�
                             ->set_width(45),  
                         Field::make('rich_text', 'content')
                             ->set_width(100)
-                            ->set_default_value( 'Какой-то текст' ),                           
-                        Field::make('text', 'button', 'Текст на кнопке')
+                            ->set_default_value( 'Какой-то текст' ),     
+                        Field::make('text', 'button_link', 'Ссылка на кнопке')
                             ->set_width(25)  
-                            ->set_default_value( 'Оставить заявку' ),                       
+                            ->set_default_value( 'Смотреть оборудование' ),                       
+                        Field::make('text', 'button_text', 'Текст на кнопке')
+                            ->set_width(25)  
+                            ->set_default_value( 'Смотреть оборудование' ),                       
                 ))  
+                ->add_fields('category__list', 'Категории товаров', array(
+                    Field::make( 'association', 'links' , 'Выбрать продукцию' )
+                        ->set_width(100)
+                        ->set_max( 7 )
+                        ->set_types(array(
+                            array(
+                                'type' => 'term',
+                                'taxonomy' => 'category',                           
+                            )
+                        )),
+                    Field::make('textarea', 'text', 'Текст')
+                ))
+                ->add_fields('pages__list', 'Услуги', array(
+                    Field::make( 'select', 'title_state', 'Статус заголовка' )
+                        ->set_width(10)
+                        ->set_options( $seo_tags )
+                        ->set_default_value( 'h2' ),
+                    Field::make( 'text', 'title', 'Заголовок' )
+                        ->set_width(45)
+                        ->set_default_value('Услуги'),                   
+                    Field::make( 'rich_text', 'content', 'Описание' )
+                        ->set_width(75)
+                        ->set_default_value('Таким образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.'),
+                    Field::make( 'association', 'links' , 'Выбрать продукцию' )
+                        ->set_width(100)
+                        ->set_max( 20 )
+                        ->set_types(array(
+                            array(
+                                'type'      => 'post',
+                                'post_type' => 'page',                               
+                            )
+                        )),                                
+                ))
+                ->add_fields('about__media', 'О компании', array(
+                    Field::make( 'select', 'title_state', 'Статус заголовка' )
+                        ->set_width(15)
+                        ->set_options( $seo_tags )
+                        ->set_default_value( 'h2' ),
+                    Field::make( 'text', 'title', 'Заголовок' )
+                        ->set_width(85)
+                        ->set_default_value('О компании'),
+                    Field::make('image', 'image', 'Изображение')
+                        ->set_width(35),
+                    Field::make( 'rich_text', 'content', 'Описание' )
+                        ->set_width(65)
+                        ->set_default_value('Таким образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.'),
+                    Field::make('text', 'link', 'Ссылка "Подробнее"'),
+                    Field::make('complex', 'advantages', 'Преимущества')
+                        ->add_fields(array(
+                            Field::make('image', 'image', 'Иконка')
+                                ->set_width(20),
+                            Field::make('text', 'title', 'Заголовок')
+                                ->set_width(40),
+                            Field::make('textarea', 'text', 'Описание')
+                                ->set_width(40)
+                        ))
+                        ->set_width(100)
+                ))
+                ->add_fields('works__slider', 'Наши объекты', array(
+                    Field::make( 'select', 'title_state', 'Статус заголовка' )
+                        ->set_width(15)
+                        ->set_options( $seo_tags )
+                        ->set_default_value( 'h2' ),
+                    Field::make( 'text', 'title', 'Заголовок' )
+                        ->set_width(85)
+                        ->set_default_value('Наши объекты'),
+                    Field::make( 'rich_text', 'content', 'Описание' )
+                        ->set_width(100)
+                        ->set_default_value('Таким образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.'),
+                   
+                    Field::make('complex', 'list', 'Выборка объекта')
+                        ->add_fields(array(
+                            Field::make('image', 'image', 'Фон текста')
+                                ->set_width(20),
+                            Field::make( 'association', 'links' , 'Выбрать продукцию' )
+                                ->set_width(100)
+                                ->set_max( 1 )
+                                ->set_types(array(
+                                    array(
+                                        'type'      => 'post',
+                                        'post_type' => 'page',                               
+                                    )
+                                )), 
+                        ))
+                        ->set_width(100),
+                    Field::make('text', 'link', 'Ссылка')
+                ))
+
+
+
                 ->add_fields('hot_link', 'Горячее предложение', array(
                         Field::make( 'select', 'title_state', 'Статус заголовка' )
                             ->set_width(10)

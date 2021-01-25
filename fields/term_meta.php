@@ -17,14 +17,15 @@ $seo_tags = array(
 Container::make( 'term_meta', 'Категории' )
     ->where( 'term_taxonomy', '=', 'category' )
     ->add_fields( array(
+        Field::make( 'image', 'preview', 'Миниатюра' )
+            ->set_width(100),
+
         Field::make( 'select', 'title_term_status', 'Статус заголовка' )
             ->set_width(10)
             ->set_options( $seo_tags )
             ->set_default_value( 'h1' ),
         Field::make( 'text', 'title_term', 'Свой заголовок' )
-            ->set_width(90),
-
-        
+            ->set_width(90),          
         Field::make( 'association', 'colors', 'Доступные цвета' )
             ->set_types( array(
                 array(

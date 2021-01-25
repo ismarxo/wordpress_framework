@@ -5,35 +5,38 @@ $arResult = [
             'blur'  => wp_get_attachment_image_url($args['image'], 'blur'), 
             'hero'  => wp_get_attachment_image_url($args['image'], 'hero')
     ],
+    'pretitle'  => $args['pretitle'],
     'title' => [
         'state' => $args['title_state'], 
         'text'  => $args['title'],
     ],
     'caption' => apply_filters( 'the_content', $args['content'] ),
-    'button' => $args['button']
+    'button' => [
+        'link' => $args['button_link'],
+        'text' => $args['button_text'],
+    ]
 ];
-
 
 ?>
 
 
-<section class="hero">
+<section class="section section-hero hero" style="background-image: url(<?= $arResult['background']['hero']; ?>);">
     <div class="container">
-        <<?= $arResult['title']['state']; ?> class="hero__title"><?= $arResult['title']['text']; ?></<?= $arResult['title']['state']; ?>>
-        <div class="format-text">
-           <?= $arResult['caption']; ?>
-        </div>
-        <div class="hero__actions">
-        <a href="#" class="btn btn--light">
-            <span><?= $arResult['button']; ?></span>
-        </a>
+        <div class="hero__inner">
+            <div class="hero__info">
+                <div class="hero__subtitle">
+                    <?= $arResult['pretitle']; ?>
+                </div>
+                <<?= $arResult['title']['state']; ?> class="h1 hero__title">
+                    <?= $arResult['title']['text']; ?>
+                </<?= $arResult['title']['state']; ?>>
+                <div class="hero__desc format-text format-text--invert">
+                    <?= $arResult['caption']; ?>
+                </div>
+                <a href="<?= $arResult['button']['link']; ?>" class="hero__link">
+                    <?= $arResult['button']['text']; ?>
+                </a>
+            </div>
         </div>
     </div>
-    <figure role="presentation" class="hero__bg hero__bg--dark">
-        <picture>
-            <source srcset="<?= $arResult['background']['hero']; ?>" media="(min-width: 992px)" />
-            <source srcset="<?= $arResult['background']['hero']; ?>" media="(min-width: 768px)" />
-            <img src="<?= $arResult['background']['hero']; ?>" srcset="<?= $arResult['background']['hero']; ?>" alt class="fit-image" />
-        </picture>
-    </figure>
 </section>

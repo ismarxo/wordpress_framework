@@ -336,7 +336,27 @@ function sliderPartners() {
             slidesToScroll: 1,
             arrows: false,
             fade: false,
-            dots: true,           
+            dots: true,
+            responsive: [		
+                {
+                    breakpoint: 1510,
+                    settings: {
+                        slidesToShow: 5,
+                    }
+                },
+                {
+                    breakpoint: 1240,
+                    settings: {
+                        slidesToShow: 4,
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                }
+            ]           
           });
     }
 }

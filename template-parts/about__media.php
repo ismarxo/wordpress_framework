@@ -6,55 +6,62 @@ $arResult = [
         'text'  => $args['title'],
     ],
     'caption' => apply_filters( 'the_content', $args['content'] ),
-    'preview' => $args['preview'],
-    'image_add' => $args['image_add'],
-    'link' => $args['link']
+    'link'  => $args['link'],
+    'image' => [
+        'blur' => wp_get_attachment_image_url($args['image'], 'blur'),
+        'image' => wp_get_attachment_image_url($args['image'], 'full'),
+        'alt' => get_post_meta($args['image'], '_wp_attachment_image_alt', TRUE)
+    ],
+    'list' => $args['advantages']
 ];
 
 ?>
 
+<div class="section section-about about">
+    <div class="container">
+        <div class="section__inner about__inner">
+            <<?= $arResult['title']['state']; ?> class="h2 section__title about__title">
+                <?= $arResult['title']['text']; ?>
+            </<?= $arResult['title']['state']; ?>>
+            <div class="section__desc about__desc">
+                <?php if($arResult['image']['blur']): ?>
+                <div class="about__photo">
+                    <img src="<?= $arResult['image']['blur'] ?>" data-src="<?= $arResult['image']['image'] ?>" alt="<?= $arResult['image']['alt'] ?>" class="about__photo-img lazyload">
+                </div>
+                <?php endif; ?>
+                <div class="format-text about__text">
+                    <?= $arResult['caption']; ?>
+                    <br>
 
-<div class="section about">
-    <div class="container">						
-        <div class="about-block clearfix">	
-            <?php
-                if(isset($arResult['preview'][0])):
-                    $arItem = $arResult['preview'][0];                
-                    $image_full      = wp_get_attachment_image_url($arItem['preview'], 'full');
-                    $image_about     = wp_get_attachment_image_url($arItem['preview'], 'about');
-                    $image_blur      = wp_get_attachment_image_url($arItem['preview'], 'blur');
-                    $image_alt = get_post_meta($arItem['preview'], '_wp_attachment_image_alt', TRUE);
-                ?>
-            <div class="about__media">
-
-                <?php  if( $arItem['_type'] == 'video'): 
-                            $video = $arItem['link']; ?>
-                
-                    <a href="<?= $video; ?>" class="about__multimedia about__multimedia--video" data-fancybox><img class="lazyload" data-src="<?= $image_about; ?>" src="<?= $image_blur; ?>" alt="<?= $image_alt; ?>"><button class="play"><img src="<?= _assets(); ?>/img/play.svg" alt="Alt" class="svg"></button></a>
-                    <?php else: ?>
-                    <a href="<?= $image_full; ?>" class="about__multimedia"><img class="lazyload" data-src="<?= $image_about; ?>" src="<?= $image_blur; ?>" alt="<?= $image_alt; ?>"></a>
-                    <?php endif; ?>
-
-                    <?php  
-                    $image_add_full      = wp_get_attachment_image_url($arResult['image_add']);
-                    $image_add_about     = wp_get_attachment_image_url($arResult['image_add'], 'about');
-                    $image_add_blur      = wp_get_attachment_image_url($arResult['image_add'], 'blur');
-                    $image_add_alt = get_post_meta($arResult['image_add'], '_wp_attachment_image_alt', TRUE);    ?>
-
-                    <a href="<?= $image_add_full; ?>" class="about__image"><img class="lazyload" data-src="<?= $image_add_full; ?>" src="<?= $image_add_blur; ?>" alt="<?= $image_add_alt; ?>"></a>								
-                    <a href="<?= the_permalink(14 ); ?>" class="about__to-map"><img src="<?= _assets(); ?>/img/placeholder-g.svg" alt="Alt" class="svg">Смотреть на карте</a>
-            </div>	
-             <?php endif; ?>
-            
-            
-            <<?= $arResult['title']['state']; ?> class="section-title"><?= $arResult['title']['text']; ?></<?= $arResult['title']['state']; ?>>
-            <div class="about__text format-text">
-                <?= $arResult['caption']; ?>
-            </div>		
-            <a href="<?= $arResult['link']; ?>" class="btn btn--bdr about__btn">Подробнее</a>				
-
-        </div>											
-        
-    </div>	
+                    <a href="<?= $arResult['link'] ?>" class="about__text-link">
+                        <span> Подробнее</span> <svg xmlns="http://www.w3.org/2000/svg" width="13"
+                            height="8" viewBox="0 0 13 8" fill="none">
+                            <path
+                                d="M12.3536 4.35355C12.5488 4.15829 12.5488 3.84171 12.3536 3.64645L9.17157 0.464466C8.97631 0.269204 8.65973 0.269204 8.46447 0.464466C8.2692 0.659728 8.2692 0.976311 8.46447 1.17157L11.2929 4L8.46447 6.82843C8.2692 7.02369 8.2692 7.34027 8.46447 7.53553C8.65973 7.7308 8.97631 7.7308 9.17157 7.53553L12.3536 4.35355ZM0 4.5H12V3.5H0V4.5Z"
+                                fill="#009A9F"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <?php if($arResult['list']): ?>
+            <ul class="about__flow">
+                <?php foreach($arResult['list'] as $item): ?>
+                <li class="about__item">
+                    <div class="about__item-icon">
+                        <img src="<?= wp_get_attachment_image_url($item['image'], 'full'); ?>" alt="<?= get_post_meta($item['image'], '_wp_attachment_image_alt', TRUE); ?>" class="about__item-icon-img">
+                    </div>
+                    <div class="about__item-info">
+                        <div class="about__item-name">
+                            <?= $item['title']; ?>
+                        </div>
+                        <div class="about__item-desc">
+                            <?= $item['text']; ?>
+                        </div>
+                    </div>
+                </li> 
+                <?php endforeach; ?>             
+            </ul>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>
-
