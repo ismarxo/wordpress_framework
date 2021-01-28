@@ -121,6 +121,8 @@ Container::make( 'post_meta', 'Настройки главной страниц�
                         ->add_fields(array(
                             Field::make('image', 'image', 'Фон текста')
                                 ->set_width(20),
+                            Field::make('image', 'image_titul', 'Титульное изображение')
+                                ->set_width(80),
                             Field::make( 'association', 'links' , 'Выбрать продукцию' )
                                 ->set_width(100)
                                 ->set_max( 1 )
@@ -134,6 +136,34 @@ Container::make( 'post_meta', 'Настройки главной страниц�
                         ->set_width(100),
                     Field::make('text', 'link', 'Ссылка')
                 ))
+                ->add_fields('brands__slider', 'Бренды', array(
+                    Field::make( 'select', 'title_state', 'Статус заголовка' )
+                        ->set_width(15)
+                        ->set_options( $seo_tags )
+                        ->set_default_value( 'h2' ),
+                    Field::make( 'text', 'title', 'Заголовок' )
+                        ->set_width(85)
+                        ->set_default_value('Бренды'),
+                    Field::make('complex', 'brand__list', 'Список брендов')
+                        ->add_fields(array(
+                            Field::make('image', 'image', 'Изображение бренда')
+                        ))
+                ))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
