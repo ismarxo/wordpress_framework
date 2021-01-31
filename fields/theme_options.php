@@ -7,6 +7,8 @@ Container::make('theme_options', 'Настройки сайта')
     ->add_tab('Шапка сайта', array(
         Field::make('image', 'header_logo', 'Логотип')
             ->set_width(50),
+        Field::make('image', 'header_logo_hero', 'Логотип')
+            ->set_width(50),
         Field::make('complex', 'header_phones', 'Телефоны')
             ->add_fields(array(
                 Field::make('text', 'phone', 'Телефон')

@@ -3,6 +3,7 @@
 $arResult = [
     'logo' => [
         'link' => wp_get_attachment_image_url(carbon_get_theme_option( 'header_logo' ), 'full'),
+        'link_hero' => wp_get_attachment_image_url(carbon_get_theme_option( 'header_logo_hero' ), 'full'),
         'alt' => get_post_meta(carbon_get_theme_option( 'header_logo' ), '_wp_attachment_image_alt', TRUE),
     ],
     'phones' => carbon_get_theme_option( 'header_phones' ),
@@ -17,6 +18,7 @@ $arResult = [
     <div class="container">
         <div class="header__inner">
             <<?php if(!is_front_page()): echo 'a href="/"'; else: echo 'span'; endif; ?> class="header__logo">
+                <img src="<?= $arResult['logo']['link_hero'] ?>" alt="<?= $arResult['logo']['alt'] ?>" class="header__logo-img header__logo-img--hero">
                 <img src="<?= $arResult['logo']['link'] ?>" alt="<?= $arResult['logo']['alt'] ?>" class="header__logo-img">
             </<?php if(!is_front_page()): echo 'a'; else: echo 'span'; endif; ?>>
             <nav class="header__menu">

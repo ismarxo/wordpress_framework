@@ -1,12 +1,12 @@
 window.addEventListener("load", () => {
     console.log('load');
     if (
-      document.querySelector(".hide-if-js > .inside > fieldset > .cf-container > .cf-container__fields > .cf-field > .cf-field__body > .cf-complex__actions > .cf-complex__toggler")
+      document.querySelector(".inside > fieldset > .cf-container > .cf-container__fields > .cf-field > .cf-field__body > .cf-complex__actions > .cf-complex__toggler")
     ) {
       console.log("click");
       document
         .querySelector(
-          ".hide-if-js > .inside > fieldset > .cf-container > .cf-container__fields > .cf-field > .cf-field__body > .cf-complex__actions > .cf-complex__toggler"
+          ".inside > fieldset > .cf-container > .cf-container__fields > .cf-field > .cf-field__body > .cf-complex__actions > .cf-complex__toggler"
         )
         .click();
   

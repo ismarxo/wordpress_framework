@@ -149,182 +149,219 @@ Container::make( 'post_meta', 'Настройки главной страниц�
                             Field::make('image', 'image', 'Изображение бренда')
                         ))
                 ))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                ->add_fields('hot_link', 'Горячее предложение', array(
-                        Field::make( 'select', 'title_state', 'Статус заголовка' )
-                            ->set_width(10)
-                            ->set_options( $seo_tags )
-                            ->set_default_value( 'div' ), 
-                        Field::make( 'text', 'title', 'Заголовок' )  
-                            ->set_width(45)
-                            ->set_default_value('Заголовок'),           
-                        Field::make( 'image', 'image', 'Фоновая картинка' )
-                            ->set_width(45),
-                        Field::make('rich_text', 'content')
-                            ->set_width(100)
-                            ->set_default_value( 'Какой-то текст' ),                            
-                        Field::make('text', 'button', 'Текст на кнопке')
-                            ->set_width(50)  
-                            ->set_default_value( 'Подробнее' ), 
-                        Field::make('text', 'link', 'Ссылка')
-                            ->set_width(50)  
-                            ->set_default_value( '/sale' ),                        
-                ))         
-                ->add_fields('page__list_current', 'Продукция', array(
+                ->add_fields('seo__content', 'Контентная область', array(
                     Field::make( 'select', 'title_state', 'Статус заголовка' )
-                        ->set_width(10)
+                        ->set_width(15)
                         ->set_options( $seo_tags )
                         ->set_default_value( 'h2' ),
                     Field::make( 'text', 'title', 'Заголовок' )
-                        ->set_width(45)
-                        ->set_default_value('Вакансии'),                   
-                    Field::make( 'rich_text', 'content', 'Описание' )
-                        ->set_width(75)
-                        ->set_default_value('Таким образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.'),
-                    Field::make( 'association', 'links' , 'Выбрать продукцию' )
-                        ->set_width(100)
-                        ->set_max( 20 )
-                        ->set_types(array(
-                            array(
-                                'type'      => 'post',
-                                'post_type' => 'page',                               
-                            )
-                        )),                                
+                        ->set_width(85),
+                    Field::make('rich_text', 'content', 'Контентная область')                    
                 ))
-                ->add_fields('advantages__list', 'Преимущества', array(
+
+
+                ->add_fields('contact__map', 'Контакты с картой', array(
                     Field::make( 'select', 'title_state', 'Статус заголовка' )
-                            ->set_width(10)
-                            ->set_options( $seo_tags )
-                            ->set_default_value( 'div' ), 
-                    Field::make( 'text', 'title', 'Заголовок' )  
-                            ->set_width(45)
-                            ->set_default_value('Заголовок'),
-                    Field::make('complex', 'advantages', 'Преимущества')
-                        ->add_fields(array(
-                            Field::make('image', 'image', 'Иконка')
-                                ->set_width(20),
-                            Field::make('text', 'title', 'Заголовок')
-                                ->set_width(40),
-                            Field::make('textarea', 'text', 'Описание')
-                                ->set_width(40)
-                        ))
-                        ->set_width(100)
-                )) 
-                ->add_fields('seo__thin', 'Отцентрованный текст', array(
-                    Field::make('rich_text', 'content', 'Описание')
-                        ->set_default_value('Юридическая компания ООО «РЕГИСТРУМ» основана в 2009 г. основными направлениями деятельности является регистрация, внесение изменений и ликвидация юридических лиц и индивидуальных предпринимателей, сопровождение сделок с недвижимостью. За время работы специалисты компании обрели большой практический опыт в сфере оказания данного вида услуг, что позволяет выполнять работу четко, качественно и гарантировать результат. <br> Наша компания не большая, мы не имеем наград и статусов. Мы просто любим свою работу и поэтому особо внимательно относимся к каждому клиенту и предлагаем разумные цены на квалифицированные услуги!')
-                ))
-                ->add_fields('team__list', 'Наши сотрудники', array(
-                    Field::make( 'select', 'title_state', 'Статус заголовка' )
-                            ->set_width(10)
-                            ->set_options( $seo_tags )
-                            ->set_default_value( 'div' ), 
-                    Field::make( 'text', 'title', 'Заголовок' )  
-                            ->set_width(45)
-                            ->set_default_value('Заголовок'),
-                    Field::make('rich_text', 'content', 'Описание')
-                            ->set_width(100),
-                    Field::make('complex', 'list', 'Сотрудники')
-                        ->add_fields(array(
-                            Field::make('image', 'image', 'Иконка')
-                                ->set_width(20),
-                            Field::make('text', 'name', 'Имя')
-                                ->set_width(25),
-                            Field::make('text', 'position', 'Должность')
-                                ->set_width(25),
-                            Field::make('textarea', 'text', 'Описание')
-                                ->set_width(30)
-                        ))
-                        ->set_width(100)
-                ))
-                ->add_fields('cert__list', 'Документация', array(
-                    Field::make( 'select', 'title_state', 'Статус заголовка' )
-                            ->set_width(10)
-                            ->set_options( $seo_tags )
-                            ->set_default_value( 'div' ), 
-                    Field::make( 'text', 'title', 'Заголовок' )  
-                            ->set_width(45)
-                            ->set_default_value('Заголовок'),
-                    Field::make('rich_text', 'content', 'Описание')
-                            ->set_width(100),
-                    Field::make('complex', 'list', 'Документы')
-                        ->add_fields(array(
-                            Field::make('image', 'image', 'Иконка')
-                                ->set_width(20),
-                            Field::make('file', 'file', 'Файл')
-                                ->set_width(20),
-                            Field::make('text', 'name', 'Название')
-                                ->set_width(30),
-                            Field::make('textarea', 'text', 'Описание')
-                                ->set_width(30)
-                        ))
-                        ->set_width(100)
-                ))
-                ->add_fields('blog__list', 'Юридический блог', array(
-                    Field::make( 'select', 'title_state', 'Статус заголовка' )
-                        ->set_width(10)
+                        ->set_width(15)
                         ->set_options( $seo_tags )
                         ->set_default_value( 'h2' ),
                     Field::make( 'text', 'title', 'Заголовок' )
-                        ->set_width(45)
-                        ->set_default_value('Юридический блог'),                   
-                    Field::make( 'rich_text', 'content', 'Описание' )
-                        ->set_width(75)
-                        ->set_default_value('Таким образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.'),
-                    Field::make( 'association', 'links' , 'Выбрать статьи' )
-                        ->set_width(100)
-                        ->set_max( 20 )
-                        ->set_types(array(
-                            array(
-                                'type'      => 'post',
-                                'post_type' => 'post',                               
-                            )
-                        )),                                
+                        ->set_width(85),
+
+
+                    Field::make( 'complex', 'phone_list', 'Телефоны' )                       
+                        ->add_fields(array(                   
+                          Field::make('text', 'phone', 'Телефон')                                     
+                        )),
+                    Field::make('textarea', 'hours', 'Режим работы')
+                        ->set_width(50),
+                    Field::make('textarea', 'address', 'Адрес')
+                        ->set_width(50),
+                    Field::make('text', 'x', 'Коорд.Широта')
+                        ->set_width(50),
+                    Field::make('text', 'y', 'Коорд.Долгота')
+                        ->set_width(50),
+                    Field::make('textarea', 'map__info', 'Информация на карте')
+                        ->set_width(50)                    
                 ))
-                ->add_fields('banner__subscribe', 'Подпишитесь на обновления', array(
-                    Field::make( 'select', 'title_state', 'Статус заголовка' )
-                        ->set_width(10)
-                        ->set_options( $seo_tags )
-                        ->set_default_value( 'div' ),
-                    Field::make( 'text', 'title', 'Заголовок' )
-                        ->set_width(45)
-                        ->set_default_value('Подпишитесь на наши обновления'),                   
-                    Field::make( 'rich_text', 'content', 'Описание' )
-                        ->set_width(75)
-                        ->set_default_value('Таким образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.'),                                
-                ))
-                ->add_fields('list__partners', 'Партнёры', array(
-                    Field::make( 'select', 'title_state', 'Статус заголовка' )
-                            ->set_width(10)
-                            ->set_options( $seo_tags )
-                            ->set_default_value( 'div' ), 
-                    Field::make( 'text', 'title', 'Заголовок' )  
-                            ->set_width(45)
-                            ->set_default_value('Заголовок'),
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // ->add_fields('hot_link', 'Горячее предложение', array(
+                //         Field::make( 'select', 'title_state', 'Статус заголовка' )
+                //             ->set_width(10)
+                //             ->set_options( $seo_tags )
+                //             ->set_default_value( 'div' ), 
+                //         Field::make( 'text', 'title', 'Заголовок' )  
+                //             ->set_width(45)
+                //             ->set_default_value('Заголовок'),           
+                //         Field::make( 'image', 'image', 'Фоновая картинка' )
+                //             ->set_width(45),
+                //         Field::make('rich_text', 'content')
+                //             ->set_width(100)
+                //             ->set_default_value( 'Какой-то текст' ),                            
+                //         Field::make('text', 'button', 'Текст на кнопке')
+                //             ->set_width(50)  
+                //             ->set_default_value( 'Подробнее' ), 
+                //         Field::make('text', 'link', 'Ссылка')
+                //             ->set_width(50)  
+                //             ->set_default_value( '/sale' ),                        
+                // ))         
+                // ->add_fields('page__list_current', 'Продукция', array(
+                //     Field::make( 'select', 'title_state', 'Статус заголовка' )
+                //         ->set_width(10)
+                //         ->set_options( $seo_tags )
+                //         ->set_default_value( 'h2' ),
+                //     Field::make( 'text', 'title', 'Заголовок' )
+                //         ->set_width(45)
+                //         ->set_default_value('Вакансии'),                   
+                //     Field::make( 'rich_text', 'content', 'Описание' )
+                //         ->set_width(75)
+                //         ->set_default_value('Таким образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.'),
+                //     Field::make( 'association', 'links' , 'Выбрать продукцию' )
+                //         ->set_width(100)
+                //         ->set_max( 20 )
+                //         ->set_types(array(
+                //             array(
+                //                 'type'      => 'post',
+                //                 'post_type' => 'page',                               
+                //             )
+                //         )),                                
+                // ))
+                // ->add_fields('advantages__list', 'Преимущества', array(
+                //     Field::make( 'select', 'title_state', 'Статус заголовка' )
+                //             ->set_width(10)
+                //             ->set_options( $seo_tags )
+                //             ->set_default_value( 'div' ), 
+                //     Field::make( 'text', 'title', 'Заголовок' )  
+                //             ->set_width(45)
+                //             ->set_default_value('Заголовок'),
+                //     Field::make('complex', 'advantages', 'Преимущества')
+                //         ->add_fields(array(
+                //             Field::make('image', 'image', 'Иконка')
+                //                 ->set_width(20),
+                //             Field::make('text', 'title', 'Заголовок')
+                //                 ->set_width(40),
+                //             Field::make('textarea', 'text', 'Описание')
+                //                 ->set_width(40)
+                //         ))
+                //         ->set_width(100)
+                // )) 
+                // ->add_fields('seo__thin', 'Отцентрованный текст', array(
+                //     Field::make('rich_text', 'content', 'Описание')
+                //         ->set_default_value('Юридическая компания ООО «РЕГИСТРУМ» основана в 2009 г. основными направлениями деятельности является регистрация, внесение изменений и ликвидация юридических лиц и индивидуальных предпринимателей, сопровождение сделок с недвижимостью. За время работы специалисты компании обрели большой практический опыт в сфере оказания данного вида услуг, что позволяет выполнять работу четко, качественно и гарантировать результат. <br> Наша компания не большая, мы не имеем наград и статусов. Мы просто любим свою работу и поэтому особо внимательно относимся к каждому клиенту и предлагаем разумные цены на квалифицированные услуги!')
+                // ))
+                // ->add_fields('team__list', 'Наши сотрудники', array(
+                //     Field::make( 'select', 'title_state', 'Статус заголовка' )
+                //             ->set_width(10)
+                //             ->set_options( $seo_tags )
+                //             ->set_default_value( 'div' ), 
+                //     Field::make( 'text', 'title', 'Заголовок' )  
+                //             ->set_width(45)
+                //             ->set_default_value('Заголовок'),
+                //     Field::make('rich_text', 'content', 'Описание')
+                //             ->set_width(100),
+                //     Field::make('complex', 'list', 'Сотрудники')
+                //         ->add_fields(array(
+                //             Field::make('image', 'image', 'Иконка')
+                //                 ->set_width(20),
+                //             Field::make('text', 'name', 'Имя')
+                //                 ->set_width(25),
+                //             Field::make('text', 'position', 'Должность')
+                //                 ->set_width(25),
+                //             Field::make('textarea', 'text', 'Описание')
+                //                 ->set_width(30)
+                //         ))
+                //         ->set_width(100)
+                // ))
+                // ->add_fields('cert__list', 'Документация', array(
+                //     Field::make( 'select', 'title_state', 'Статус заголовка' )
+                //             ->set_width(10)
+                //             ->set_options( $seo_tags )
+                //             ->set_default_value( 'div' ), 
+                //     Field::make( 'text', 'title', 'Заголовок' )  
+                //             ->set_width(45)
+                //             ->set_default_value('Заголовок'),
+                //     Field::make('rich_text', 'content', 'Описание')
+                //             ->set_width(100),
+                //     Field::make('complex', 'list', 'Документы')
+                //         ->add_fields(array(
+                //             Field::make('image', 'image', 'Иконка')
+                //                 ->set_width(20),
+                //             Field::make('file', 'file', 'Файл')
+                //                 ->set_width(20),
+                //             Field::make('text', 'name', 'Название')
+                //                 ->set_width(30),
+                //             Field::make('textarea', 'text', 'Описание')
+                //                 ->set_width(30)
+                //         ))
+                //         ->set_width(100)
+                // ))
+                // ->add_fields('blog__list', 'Юридический блог', array(
+                //     Field::make( 'select', 'title_state', 'Статус заголовка' )
+                //         ->set_width(10)
+                //         ->set_options( $seo_tags )
+                //         ->set_default_value( 'h2' ),
+                //     Field::make( 'text', 'title', 'Заголовок' )
+                //         ->set_width(45)
+                //         ->set_default_value('Юридический блог'),                   
+                //     Field::make( 'rich_text', 'content', 'Описание' )
+                //         ->set_width(75)
+                //         ->set_default_value('Таким образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.'),
+                //     Field::make( 'association', 'links' , 'Выбрать статьи' )
+                //         ->set_width(100)
+                //         ->set_max( 20 )
+                //         ->set_types(array(
+                //             array(
+                //                 'type'      => 'post',
+                //                 'post_type' => 'post',                               
+                //             )
+                //         )),                                
+                // ))
+                // ->add_fields('banner__subscribe', 'Подпишитесь на обновления', array(
+                //     Field::make( 'select', 'title_state', 'Статус заголовка' )
+                //         ->set_width(10)
+                //         ->set_options( $seo_tags )
+                //         ->set_default_value( 'div' ),
+                //     Field::make( 'text', 'title', 'Заголовок' )
+                //         ->set_width(45)
+                //         ->set_default_value('Подпишитесь на наши обновления'),                   
+                //     Field::make( 'rich_text', 'content', 'Описание' )
+                //         ->set_width(75)
+                //         ->set_default_value('Таким образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.'),                                
+                // ))
+                // ->add_fields('list__partners', 'Партнёры', array(
+                //     Field::make( 'select', 'title_state', 'Статус заголовка' )
+                //             ->set_width(10)
+                //             ->set_options( $seo_tags )
+                //             ->set_default_value( 'div' ), 
+                //     Field::make( 'text', 'title', 'Заголовок' )  
+                //             ->set_width(45)
+                //             ->set_default_value('Заголовок'),
                    
-                    Field::make('complex', 'list', 'Партнёры')
-                        ->add_fields(array(
-                            Field::make('image', 'image', 'Иконка')
-                        ))
-                        ->set_width(100)
-                ))
+                //     Field::make('complex', 'list', 'Партнёры')
+                //         ->add_fields(array(
+                //             Field::make('image', 'image', 'Иконка')
+                //         ))
+                //         ->set_width(100)
+                // ))
 
       ));
 
