@@ -38,21 +38,21 @@ $alt =  get_post_meta(carbon_get_term_meta( 3, 'image' ), '_wp_attachment_image_
 
             <?php 
 
-            $months = array( 1 => 'ЯНВАРЯ' , 'ФЕВРАЛЯ' , 'МАРТА' , 'АПРЕЛЯ' , 'МАЯ' , 'ИЮНЯ' , 'ИЮЛЯ' , 'АВГУСТА' , 'СЕНТЯБРЯ' , 'ОКТЯБРЯ' , 'НОЯБРЯ' , 'ДЕКАБРЯ' );
+                $months = array( 1 => 'ЯНВАРЯ' , 'ФЕВРАЛЯ' , 'МАРТА' , 'АПРЕЛЯ' , 'МАЯ' , 'ИЮНЯ' , 'ИЮЛЯ' , 'АВГУСТА' , 'СЕНТЯБРЯ' , 'ОКТЯБРЯ' , 'НОЯБРЯ' , 'ДЕКАБРЯ' );                
+
+                $args = array(
+                    'posts_per_page' => -1,                    
+                    'category__in' => 3,               
+                );     
+
+                $query = new WP_Query( $args ); 
+
+                while( $query->have_posts() ): $query->the_post();   
+
+
+                $id_thumb = get_post_thumbnail_id();
+                $image_alt = get_post_meta($id_thumb, '_wp_attachment_image_alt', true);
                 
-
-            $args = array(
-                'posts_per_page' => -1,                    
-                'category__in' => 3,               
-            );     
-
-            $query = new WP_Query( $args ); 
-
-            while( $query->have_posts() ): $query->the_post();   
-
-
-            $id_thumb = get_post_thumbnail_id();
-            $image_alt = get_post_meta($id_thumb, '_wp_attachment_image_alt', true);
             ?>                                                                              
 
 

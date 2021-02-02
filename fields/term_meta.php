@@ -14,8 +14,13 @@ $seo_tags = array(
   'p'     => 'p',                
 );
 
+$category     = get_queried_object();
+
+// $category_id  = $category->term_taxonomy_id;
+
 Container::make( 'term_meta', 'Категории' )
     ->where( 'term_taxonomy', '=', 'category' )
+  
     ->add_fields( array(
         Field::make( 'image', 'preview', 'Миниатюра' )
             ->set_width(100),
